@@ -1,0 +1,76 @@
+!!! 5
+%html{'lang': "en"}
+    %head
+        %meta{'charset': "utf-8"}
+        %meta{'content': "width=device-width, initial-scale=1.0", 'name': "viewport"}
+        %link{ 'href': '={STATIC_URL}main/bootstrap/css/bootstrap.min.css', 'rel': 'stylesheet', 'media': 'screen' }
+        %link{ 'href': '={STATIC_URL}main/css/main.css', 'rel': 'stylesheet', 'media': 'screen'}
+        %title Driver list
+        :javascript
+            // Google analytics.
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-39028731-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+    %body
+        .navbar.navbar-fixed-top
+            .navbar-inner
+                .container
+                    %a.brand{ 'href': '/' } CTA Driver Profile
+                    %ul.nav.pull-right
+                        %li
+                            %a.pull-right{ 'href': '/accounts/logout' } Log out
+
+        .container.well
+            #welcome.lead
+                Find drivers by sorting the table, or searching by name, garage, anything.
+            %table#employee-list.table.table-striped.table-bordered.table-hover
+                %thead
+                    %tr
+                        %th
+                            Badge
+                        %th
+                            Name
+                        %th
+                            Garage
+                        %th
+                            Status
+                        %th
+                            Start date
+                        %th
+                            Deviations
+                        -# %th
+                        -#     On-time percentage
+                %tbody
+                    - for employee in employee_list
+                        %tr
+                            %td 
+                                %span.badge
+                                    = employee.badge_number
+                            %td 
+                                %a{ 'href': '={employee.badge_number}' }
+                                    = employee.first_name
+                                    = employee.last_name
+                            %td
+                                = employee.garage_name
+                            %td 
+                                = employee.job_category
+                            %td 
+                                = employee.start_date.year
+                            %td 
+                                = employee.n_deviations
+                            -# %td 
+                            -#     = employee.otp
+
+        / pull in dataTables library and table js to create employee table 
+        %script{ 'src': '={STATIC_URL}main/js/lib/dataTables-1.9.3/media/js/jquery.js'}
+        %script{ 'src': '={STATIC_URL}main/js/lib/dataTables-1.9.3/media/js/jquery.dataTables.min.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_table.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_table_paging.js'}
+     

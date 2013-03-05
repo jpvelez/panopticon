@@ -1,0 +1,278 @@
+/* Pad to top of pages to make room for navbar */
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+    background: #152130;
+}
+
+.well {
+    background-color: #fff;
+}
+
+
+/*Log in page styles*/
+
+.form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 25px auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+.bus {
+    margin-left: 15px;
+}
+
+/* EMPLOYEE LIST */
+#welcome {
+    margin-bottom: 0px;
+}
+
+/* EMPLOYEE PROFILE */
+/* Get 'time at CTA' bit on employee_profile to render correctly */
+.dl-horizontal {
+    margin-top: 0px;
+}
+
+.dl-horizontal dt {
+    width: 240px;
+}
+
+.dl-horizontal dd {
+    margin-left: 260px;
+}
+
+/* D3 badge styles */
+
+.badges {
+    padding-left: 27px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    overflow: hidden;
+}
+
+.single-badge {
+    height: 65px;
+    width: 57px;
+    margin: 0px 20px 10px 0px;
+    padding: 0px 5px 0px 5px;
+    float: left;
+
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+
+    line-height: 14px;
+    color: #fff;
+    text-align: center;
+}
+
+/* This div contains deviation, otp, and rank day counts. */
+.single-badge div { 
+    font-size: 33px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+.single-badge p {
+    letter-spacing: 0.05em;
+    margin: 11px 0 0 0;
+    width: 100%;
+    white-space: none;
+    font-size: 11px;
+    line-height: 1.2em;
+}
+
+/* Center text better on otp badges. */ 
+#otp-badges div {
+    margin-top: 15px;
+}
+#otp-badges p {
+    margin-top: 12px;
+}
+
+/*Styles for calendar dates, tooltips, and disclaimer*/
+
+.months { 
+    font-size: 11px;
+    list-style: none; 
+    margin: 0 0 0 30px; 
+    text-align: center; 
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.months li { 
+    float: left;
+    width: 8.25%;
+    color: rgb(153, 153, 153);
+}
+
+.weekdays { 
+    float: left;
+    font-size: 9px; 
+    list-style: none; 
+    margin: 3px 10px 0 0; 
+    text-transform: 
+    uppercase; 
+    width: 20px;
+}
+
+.weekdays li { 
+    margin: 0; 
+    padding: 0 0; 
+    line-height: 17px; 
+    color: rgb(153, 153, 153);
+}
+
+#tooltip {
+    position: absolute;
+    height: auto;
+    width: 140px;
+    font-family: "RobotoRegular", sans-serif;
+    font-size: 12px;
+    color: white;
+    background-color:rgba(10,10,10,0.7);
+    border-radius: 6px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    pointer-events: none;
+    z-index:500;
+}
+
+#tooltip p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#disclaimer {  
+    margin-left: 30px; 
+    margin-right: 30px;
+} 
+
+/* D3 calendar styles */
+
+.cal {
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    shape-rendering: crispEdges;
+
+}
+
+.day {
+  fill: #fff;
+  stroke: #ccc;
+
+}
+
+.month {
+  fill: none;
+  stroke: #000;
+  stroke-width: 2px;
+}
+
+.deviation-colors .q0-12 {fill:rgb(166,206,227); background-color: rgb(166,206,227);}
+.deviation-colors .q1-12 {fill:rgb(31,120,180); background-color: rgb(31,120,180);}
+.deviation-colors .q2-12 {fill:rgb(178,223,138); background-color: rgb(178,223,138);}
+.deviation-colors .q3-12 {fill:rgb(51,160,44); background-color: rgb(51,160,44);}
+.deviation-colors .q4-12 {fill:rgb(251,154,153); background-color: rgb(251,154,153)}
+.deviation-colors .q5-12 {fill:rgb(227,26,28); background-color: rgb(227,26,28)}
+.deviation-colors .q6-12 {fill:rgb(253,191,111); background-color: rgb(253,191,111)}
+.deviation-colors .q7-12 {fill:rgb(255,127,0); background-color: rgb(255,127,0)}
+.deviation-colors .q8-12 {fill:rgb(202,178,214); background-color: rgb(202,178,214)}
+.deviation-colors .q9-12 {fill:rgb(106,61,154); background-color: rgb(106,61,154)}
+.deviation-colors .q10-12 {fill:rgb(254,204,92); background-color: rgb(254,204,92)}
+.deviation-colors .q11-12 {fill:rgb(177,89,40); background-color: rgb(177,89,40)}
+.deviation-colors .gray {fill: #dcdcdc; background-color: #dcdcdc;
+    /* Makes text on gray badges visible. */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+
+.otp-colors .q0-5 {fill:rgb(215,25,28); background-color: rgb(215,25,28)}
+.otp-colors .q1-5 {fill:rgb(253,174,97); background-color: rgb(253,174,97)}
+.otp-colors .q2-5 {fill:rgb(255,255,191); background-color: rgb(255,255,191);
+    /* Makes text on yellow badges visible. */
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+   }
+.otp-colors .q3-5 {fill:rgb(166,217,106); background-color: rgb(166,217,106)}
+.otp-colors .q4-5 {fill:rgb(26,150,65); background-color: rgb(26,150,65)}
+.otp-colors .gray {fill: #dcdcdc; background-color: #dcdcdc;}
+
+.rank-colors .q0-5 {fill:rgb(26,150,65); background-color: rgb(26,150,65)}
+.rank-colors .q1-5 {fill:rgb(166,217,106); background-color: rgb(166,217,106)}
+.rank-colors .q2-5 {fill:rgb(255,255,191); background-color: rgb(255,255,191);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+.rank-colors .q3-5 {fill:rgb(253,174,97); background-color: rgb(253,174,97)}
+.rank-colors .q4-5 {fill:rgb(215,25,28); background-color: rgb(215,25,28)}
+.rank-colors .gray {fill: #dcdcdc; background-color: #dcdcdc;}
+
+
+/* Integrate dataTables styles with Bootstrap 2.0 */ 
+/* Override bootstrap styles so #employee-list table renders correctly */
+div.dataTables_length label {
+    float: left;
+    text-align: left;
+}
+ 
+div.dataTables_length select {
+    width: 75px;
+}
+ 
+div.dataTables_filter label {
+    float: right;
+}
+ 
+div.dataTables_info {
+    padding-top: 8px;
+}
+ 
+div.dataTables_paginate {
+    float: right;
+    margin: 0;
+}
+ 
+table {
+    margin: 6px !important;
+    clear: both;
+}
+
+/* Sorting styles for #employee-list table */
+table.table thead .sorting,
+table.table thead .sorting_asc,
+table.table thead .sorting_desc,
+table.table thead .sorting_asc_disabled,
+table.table thead .sorting_desc_disabled {
+    cursor: pointer;
+    *cursor: hand;
+}
+ 
+table.table thead .sorting { background: url('/media/main/img/datatables/sort_both.png') no-repeat center right; }
+table.table thead .sorting_asc { background: url('/media/main/img/datatables/sort_asc.png') no-repeat center right; }
+table.table thead .sorting_desc { background: url('/media/main/img/datatables/sort_desc.png') no-repeat center right; }
+ 
+table.table thead .sorting_asc_disabled { background: url('/media/main/img/datatables/sort_asc_disabled.png') no-repeat center right; }
+table.table thead .sorting_desc_disabled { background: url('/media/main/img/datatables/sort_desc_disabled.png') no-repeat center right; }

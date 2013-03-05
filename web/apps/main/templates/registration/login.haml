@@ -1,0 +1,42 @@
+!!! 5
+%html{'lang': "en"}
+  %head
+    %meta{'charset': "utf-8"}
+    %meta{'content': "width=device-width, initial-scale=1.0", 'name': "viewport"}
+    %link{ 'href': '={STATIC_URL}main/bootstrap/css/bootstrap.min.css', 'rel': 'stylesheet', 'media': 'screen' }
+    %link{ 'href': '={STATIC_URL}main/css/main.css', 'rel': 'stylesheet', 'media': 'screen'}
+    %title Sign in
+    :javascript
+            // Google analytics.
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-39028731-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+
+  %body
+    .navbar.navbar-fixed-top
+        .navbar-inner
+            .container
+                %a.brand{ 'href': '#' } CTA Driver Profile
+    .container
+      %form.form-signin{ 'method': 'post', 'action': '{% url django.contrib.auth.views.login %}', 'style': 'background-color: rgba(255, 255, 255, 0.80);' }
+        %img.bus{ 'src': '={STATIC_URL}main/img/bus.png' }
+        - if form.errors
+          .alert.alert-error
+            Your username and password didn't match. Please try again.
+        - csrf_token
+        %h2.form-signin-heading Please log in
+        %input.input-block-level{'placeholder': "Username", 'type': "text", 'name': 'username'}
+        %input.input-block-level{'placeholder': "Password", 'type': "password", 'name': 'password'}
+        %input.btn.btn-large.btn-primary{'type': "submit", 'value': 'Go!'}
+        %input{ 'type': 'hidden', 'name': 'next', 'value': '={ next }' }
+
+  %script{ 'src': '={STATIC_URL}main/js/jquery-1.9.1.min.js'}
+  %script{ 'src': '={STATIC_URL}main/js/jquery.backstretch.min.js'}
+  :javascript
+    $.backstretch("/static/main/img/cta_1950_bg.jpg");

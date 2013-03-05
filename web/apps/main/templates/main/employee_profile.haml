@@ -1,0 +1,211 @@
+!!! 5
+%html{'lang': "en"}
+    %head
+        %meta{'charset': "utf-8"}
+        %meta{'content': "width=device-width, initial-scale=1.0", 'name': "viewport"}
+        %link{ 'href': '={STATIC_URL}main/bootstrap/css/bootstrap.min.css', 'rel': 'stylesheet', 'media': 'screen' }
+        %link{ 'href': '={STATIC_URL}main/css/main.css', 'rel': 'stylesheet', 'media': 'screen'}
+        %title ={employee.first_name} ={employee.last_name}
+        :javascript
+            // Google analytics.
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-39028731-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+       
+    %body
+        .navbar.navbar-fixed-top
+            .navbar-inner
+                .container
+                    %a.brand{ 'href': '/' }
+                        CTA Driver Profile
+                    %ul.nav
+                        %li
+                            %a{ 'href': '#bio'} Bio
+                        %li 
+                            %a{ 'href': '#deviations'} Deviations
+                        %li 
+                            %a{ 'href': '#driving-performance'} Driving performance
+                    %ul.nav.pull-right
+                        %li
+                            %a.pull-right{ 'href': '/accounts/logout' } Log out
+                   
+        .container.well
+
+            / employee bio
+            #bio.row
+                .span12
+                    %h1
+                        = employee.first_name
+                        = employee.last_name
+                        %small
+                             \#{{ employee.badge_number }}
+                    %hr
+            #stats.row
+                .span6
+                    %p.lead 
+                        {{employee.address}} {{employee.apt}}, {{employee.city}}, {{employee.state}} {{employee.zip}}
+                .span5.offset1
+                    %dl.dl-horizontal
+                        %dt.lead
+                            - if employee.job_category == 'FTP'
+                                Full-time
+                            - else
+                                Part-time
+                            since 2006
+                        %dd.lead.muted 
+                            6 years
+                        %dt.lead
+                            - if employee.garage_name
+                                = employee.garage_name
+                            - else
+                                Garage
+
+                        %dd.lead.muted 
+                            ? years
+                        %dt.lead
+                            CTA since 
+                            = employee.start_date.year
+                        %dd.lead.muted 
+                            = employee.years_since_start
+                            years
+
+            #deviations.row
+                .span12
+
+                    / deviation badges and calendar
+                    %h3 Deviation days
+                        %small Am I showing up to work?
+                    #deviation-badges.deviation-colors.badges
+                    %ol.months
+                        %li JAN
+                        %li FEB
+                        %li MAR
+                        %li APR
+                        %li MAY
+                        %li JUN
+                        %li JUL
+                        %li AUG
+                        %li SEP
+                        %li OCT
+                        %li NOV
+                        %li DEC
+                    %ol.weekdays
+                        %li SUN
+                        %li MON
+                        %li TUE
+                        %li WED
+                        %li THR
+                        %li FRI
+                        %li SAT
+                    #deviation-cal.cal
+                    #tooltip
+
+            #driving-performance.row
+                .span12
+
+                    %h3 On-time percentage
+                        %small Am I driving on schedule?
+                    #otp-badges.otp-colors.badges
+                    %ol.months
+                        %li JAN
+                        %li FEB
+                        %li MAR
+                        %li APR
+                        %li MAY
+                        %li JUN
+                        %li JUL
+                        %li AUG
+                        %li SEP
+                        %li OCT
+                        %li NOV
+                        %li DEC
+                    %ol.weekdays
+                        %li SUN
+                        %li MON
+                        %li TUE
+                        %li WED
+                        %li THR
+                        %li FRI
+                        %li SAT
+                    #otp-cal.cal
+
+                    %h3 Driving compared to peers
+                        %small
+                            Do I hit my time points more - or less - on time than the buses right before and after me?
+                    #rank-badges.rank-colors.badges
+                    %ol.months
+                        %li JAN
+                        %li FEB
+                        %li MAR
+                        %li APR
+                        %li MAY
+                        %li JUN
+                        %li JUL
+                        %li AUG
+                        %li SEP
+                        %li OCT
+                        %li NOV
+                        %li DEC
+                    %ol.weekdays
+                        %li SUN
+                        %li MON
+                        %li TUE
+                        %li WED
+                        %li THR
+                        %li FRI
+                        %li SAT
+                    #rank-cal.cal
+                    %p#disclaimer
+                        %small.muted
+                            Drivers on busy routes can have lower OTP. To grade their driving more fairly, this chart compares their punctuality to drivers facing similar traffic and customers: the two operators driving the route right before and after them. By doing this, the chart tries to measure how well an operator drove given how busy their route is.
+                    %br
+
+                    %h3 Deviation list
+                        %small Which days did I miss?
+                    / deviations table
+                    - if employee_deviations
+                        %table#employee-list.table.table-striped.table-bordered.table-hover
+                            %thead
+                                %tr
+                                    %th
+                                        Category
+                                    %th
+                                        Date
+                                    %th
+                                        Garage
+                            %tbody
+                                - for deviation in employee_deviations
+                                    %tr
+                                        %td 
+                                            = deviation.category
+                                        %td 
+                                            = deviation.date
+                                        %td 
+                                            = deviation.garage.name
+
+
+        / pull in d3 library and calendar JavaScripts to create deviations calendar and badges
+        :javascript
+            var calendar_deviations = {{calendar_deviations_json|safe}}
+            var deviation_badge_data = {{deviation_badge_data_json|safe}}
+            var calendar_driving_otp = {{calendar_driving_otp_json|safe}}
+            var otp_badge_data = {{otp_badge_data_json|safe}}
+            var calendar_driving_ranks = {{calendar_driving_ranks_json|safe}}
+            var rank_badge_data = {{rank_badge_data_json|safe}}
+        %script{ 'src': '={STATIC_URL}main/js/d3.v3.min.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_profile_deviation_calendar.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_profile_badges.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_profile_otp_calendar.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_profile_rank_calendar.js'}
+        
+        / pull in dataTables library and table js to create deviations table (borrowing styles from employee_list table.)
+        %script{ 'src': '={STATIC_URL}main/js/jquery-1.9.1.min.js'}
+        %script{ 'src': '={STATIC_URL}main/js/lib/dataTables-1.9.3/media/js/jquery.dataTables.min.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_table.js'}
+        %script{ 'src': '={STATIC_URL}main/js/employee_table_paging.js'}

@@ -1,0 +1,26 @@
+# Ignore mercurial files.
+.hg*
+
+# Ignore crap files.
+*~
+*.DS_Store
+*.pyc
+*.sass-cache
+*CACHE*
+CTA_Profiles.sublime*
+
+# Ignore all big-ass data files.
+web/cta_profiles__web.dump
+data/
+analysis/avas_ridecheckmaster_sample.csv
+munging/daily_average_ranks_2012
+web/Paily_average_ranks_2012.txt
+
+# Ignore database login file
+database.yml
+
+# Ignore server deployment instruction files.
+deploy/
+
+# Ignore dbvcs fixture backups.
+*.json.backup

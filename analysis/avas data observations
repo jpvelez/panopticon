@@ -1,0 +1,8 @@
+
+Figured out the following things by looking at a Pivot table of the Bus location data (AVAS).xls, which is a one-day sample of AVAS.ride_check_master:
+
+- Operators between 1~12 trips a day. 
+- Operators appear to only have one garage.
+- Most operators only have one run (run_key), around one in ten have 2, or even 3. Similarly, most runs have only one operator, around one in ten have 2, or even 3.
+- For one day, scheduled trip (trip key) appears to have only one actual trip (serial id). For one week, will each scheduled trip have 5 actual trips, one for each weekday?
+- Each trip (serial id) appears to have only one vehicle (vehicle description), but some runs have more than one vehicle because operators occassionally switch bus types between a trips.

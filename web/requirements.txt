@@ -1,0 +1,9 @@
+Django==1.4.2
+Markdown==2.2.1
+MySQL-python==1.2.4c1
+PyYAML==3.10
+Pygments==1.6
+hamlpy==0.82.2
+numpy==1.7.0
+python-memcached==1.48
+wsgiref==0.1.2
