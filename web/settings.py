@@ -14,9 +14,12 @@ PROJECT_ROOT = os.path.realpath(os.path.abspath(os.path.join(
     os.path.dirname(os.path.abspath(__file__)),
 )))
 
+# Load settings configuration: environment and database connection.
+config = yaml.load(open('config.yml', 'r'))
 # Turn on debugging statements when using runserver.
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+if config['environment'] == 'development':
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
 
 # Admin.
 ADMINS = (
@@ -138,13 +141,12 @@ MIDDLEWARE_CLASSES = (
 )
 
 # Connect to mysql database.
-db = yaml.load(open('database.yml', 'r'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': db['name'],
-        'USER': db['username'],
-        'PASSWORD': db['password'],
+        'NAME': config['db_name'],
+        'USER': config['db_username'],
+        'PASSWORD': config['db_password'],
         'HOST': '',
         'PORT': '',
     }
