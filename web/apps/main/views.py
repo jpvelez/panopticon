@@ -141,8 +141,6 @@ def employee_profile(request, badge_number):
     try:
         inds = np.digitize(x, rank_quintiles)
 
-        print x, inds
-
         # Count number of rank days per bin.
         rank_quintile_count = {}
         # Tuples sort the quintile labels and count in the red-to-green order on the page.
