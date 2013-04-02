@@ -17,8 +17,9 @@ def home(request):
 @login_required
 def employee_list(request):
 
-    # Get all cta drivers for employee_list datatable.
-    employee_list = Employee.objects.all()
+    # Get all cta drivers for employee_list datatable. 
+    # Only getting Kedzie garage operators at the moment.
+    employee_list = Employee.objects.filter(garage__name='Kedzie')
 
     return render_to_response('main/employee_list.haml', {
         'employee_list': employee_list,
