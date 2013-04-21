@@ -5,6 +5,8 @@ import sys
 project_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_dir)
 
+print >> sys.stderr, sys.path
+
 # Add django settings to server env.
 os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 

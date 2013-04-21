@@ -16,6 +16,10 @@ PROJECT_ROOT = os.path.realpath(os.path.abspath(os.path.join(
 
 # Load settings configuration: environment and database connection.
 config = yaml.load(open('database.yml', 'r'))
+
+# Tell django development server to use wsgi file 
+WSGI_APPLICATION = "wsgi.application"
+
 # Turn on debugging statements when using runserver.
 if config['environment'] == 'development':
     DEBUG = True
